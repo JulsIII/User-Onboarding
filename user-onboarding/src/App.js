@@ -12,13 +12,13 @@ const defaultValues = {
   name: "",
   email: "",
   password: "",
+  terms: false,
 };
 
 const defaultErrors = {
   name: '',
   email: '',
   password: '',
-  terms: '',
 }
 
 function App() {
