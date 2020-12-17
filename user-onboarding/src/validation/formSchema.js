@@ -7,5 +7,5 @@ export default yup.object().shape({
     .email("Please Enter A Vaild Email Address")
     .required("Please Enter An Email Address"),
   password: yup.string().required("Please Enter A Password"),
-  terms: yup.boolean().oneOf([true], "Please Read The Terms"),
+  terms: yup.boolean().oneOf([true], "Please Agree To Terms"),
 });
