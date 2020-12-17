@@ -1,8 +1,7 @@
-// write tests here
+
 describe("User Onboarding App", () => {
-    // here go our tests
+   
      beforeEach(() => {
-      // arbitrary code you want running before tests start
        cy.visit("http://localhost:3000");
  });
   
@@ -11,29 +10,14 @@ describe("User Onboarding App", () => {
     const passwordInput = () => cy.get('input[name="password"]');
     const termsCheckbox = () => cy.get('input[name="terms"]');
     const submitButton = () => cy.get("#submitBtn");
-    //const cancelButton = () => cy.get("#cancelBtn");
-  
-    // here go our tests
-    it("test to make sure tests work", () => {
-      // false positive
-      // 'expect' is an assertion
-      // there can be many assertions per test
-      // inside the 'it' statement (test) many assertions may be
-      // logically grouped together
+   
+
+    it("Sanity Check.", () => {
       expect(1 + 2).to.equal(3);
       expect(2 + 2).not.to.equal(5);
     });
   
-    // it("the proper elements are showing on the screeen", () => {
-    //   textInput().should("exist");
-    //   cy.get('input[name="foobar"]').should("not.exist");
-    //   submitButton().should("exist");
-    //   //cancelButton().should("exist");
-    //   //cy.contains("Submit Quote");
-    //   //cy.contains(/submit quote/i);
-    // });
-  
-    it("Grab, Clear, and Input & then Assertions", () => {
+    it("Grab, Clear, and Input & then Assertions.", () => {
 
         textInput()
         .should("have.value", "")
@@ -54,10 +38,9 @@ describe("User Onboarding App", () => {
         .should('be.visible')
         .check({ force: true})
         .should('be.checked')
-
     });
   
-    it("Check to see if a user can submit the form data", () => {
+    it("Check to see if a user can submit the form data.", () => {
  
       submitButton().should("be.disabled");
      
@@ -71,69 +54,34 @@ describe("User Onboarding App", () => {
       passwordInput().clear();
       passwordInput().type("password1234");
 
-      termsCheckbox().check({ force: false})
+      termsCheckbox().uncheck({ force: true})
       termsCheckbox().check({ force: true})
 
       submitButton().should("not.be.disabled");
       submitButton().click();
-   
     });
   
 
-    // it("Check for form validation if an input is left empty", () => {  //fill it out and then remove it again to make validation warning pop up
-    //     // set up, sanity checks to make sure initial state is legit
-    //     // act (like typing or clicking - mimicking user input)
-    //     // assert that the action has the effect we expect
-    
-    //     //submit quote is disabled.
-    //     submitButton().should("be.disabled");
-    //     // put text into text input
-    //     textInput().type("TEXT INPUT");
-    //     // the submit button still disabled.
-    //     submitButton().should("be.disabled");
-    //     // clear text input
-    //     textInput().clear();
-    //     // put text into author input
-    //     emailInput().type("AUTHOR@INPUT.com");
-    //     // the submit button still disabled.
-    //     submitButton().should("be.disabled");
-    //     // both inputs are filled
-    //     textInput().type("TEXT INPUT");
-    //     // submit button is working.
-    //     submitButton().should("not.be.disabled");
-    
-    //     // "be.disabled"
-    //     // .clear()
-
-    //   });
-
-
-
-
-
-    // it("can cancel a new quote", () => {
-    //   // should('have.value', '') - input is empty
-    //   // .click()
+    it("Check for form validation if an input is left empty.", () => {  
   
-    //   textInput().type("test");
-    //   emailInput().type("test@test.com");
-    //   //cancelButton().trigger("click");
-    //   // cancelButton().click();
-    //   (textInput() && emailInput()).should("have.value", "");
-    // });
+    
+        submitButton().should("be.disabled");
+     
+        textInput().type("TEXT INPUT");
+        textInput().clear();
+        
+        emailInput().type("AUTHOR@INPUT.com");
+        emailInput().clear();
+        
   
-    // it("can submit a new quote", () => {
-    //   // arrange/setup: that text is not in the DOM
-    //   // act: create a quote 'have fun (Rhiannon)'
-    //   // assert: that the have fun is in the DOM
-    //   cy.contains("have fun (Rhiannon)").should("not.exist");
-    //   textInput().type("name");
-    //   emailInput().type("Rhiannon@asifdh.com");
-    //   submitButton().click();
-    //   cy.contains("have fun (Rhiannon)").should("exist");
-    // });
-
-
+        passwordInput().type("password1234");
+        passwordInput().clear();
+        
+        termsCheckbox().check({ force: true})
+        termsCheckbox().uncheck({ force: true})
+        
+        submitButton().should("be.disabled");
+      });
 
   });
   
