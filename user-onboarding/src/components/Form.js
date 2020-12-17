@@ -13,6 +13,7 @@ export default function Form(props) {
               value={formValues.name}
               onChange={change}
             />
+            <p>{errors.name}</p> 
           </label>
           <label htmlFor="email">
             Email
@@ -22,7 +23,6 @@ export default function Form(props) {
               value={formValues.email}
               onChange={change}
             /> 
-            {/* Put the errors on screen */}
            <p>{errors.email}</p>         
           </label>
           <label htmlFor="email">
@@ -32,10 +32,11 @@ export default function Form(props) {
               name="password"
               value={formValues.password}
               onChange={change}
-            />          
+            />   
+            <p>{errors.password}</p>        
           </label>
           <label htmlFor="terms">
-          Terms <input type="checkbox" name="terms" onChange={change}/>
+          Agree to Terms<input type="checkbox" name="terms" onChange={change}/> 
         </label>
           <button disabled={buttonDisabled}>Submit</button>
         </form>

@@ -49,6 +49,7 @@ When you get your data back, you will want to do something with it, right? Let's
 - [*] Every time you make a `POST` request, and get that new user data back, update your `users` state with the new user added to the array
 - [*] Render `users` in your app. You can use the html pre tag and JSON.stringify() method to display your post request.
 
+
 ### Task 3: Stretch Goals
 
 The following are stretch goals that you should attempt _after_ you meet MVP for your project:

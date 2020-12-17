@@ -3,7 +3,7 @@ import './App.css';
 import React, {useState, useEffect } from "react";
 import Form from "./components/Form";
 import './App.css';
-import TeamList from "./components/FormList";
+import UserList from "./components/FormList";
 import * as yup from 'yup'
 import formSchema from './validation/formSchema'
 import axios from 'axios'
@@ -24,10 +24,9 @@ const defaultErrors = {
 function App() {
   
   const [formValues, setFormValues] = useState(defaultValues);
-  const [savedTeamInfo, setSavedTeamInfo] = useState([]); //users
+  const [savedUserInfo, setSavedUserInfo] = useState([]); //users state
   const [errors, setErrors] = useState(defaultErrors); 
   const [buttonDisabled, setButtonDisabled] = useState(true);
-  //const [post, setPost] = useState([]);
 
   const change = (evt) => {
   const { name, value } = evt.target;
@@ -44,7 +43,7 @@ function App() {
   axios
     .post("https://reqres.in/api/users", formValues)
     .then((res) => {
-      setSavedTeamInfo([res.data, ...savedTeamInfo]);
+      setSavedUserInfo([res.data, ...savedUserInfo]);
     console.log(res.data);
   }).catch((err) => {
     console.log(err);
@@ -56,7 +55,7 @@ function App() {
     email: formValues.email.trimEnd(),
     password: formValues.name.trim(),
   };
-  setSavedTeamInfo([...savedTeamInfo, newData]);  //redundant remove after researching more(dry code)
+  setSavedUserInfo([...savedUserInfo, newData]); 
   setFormValues(defaultValues);
 };
 
@@ -70,7 +69,6 @@ const validate = (name, value) => {
     .catch((err) => {
       setErrors({ ...errors, [name]: err.errors[0] }); 
     });
-    //setFormValues({...formValues, [name]: value});  /// investiaget
 };
 
 useEffect(() => {
@@ -82,7 +80,7 @@ useEffect(() => {
    return (
     <div className="App">
       <Form formValues={formValues} change={change} submit={submit} buttonDisabled={buttonDisabled} errors={errors}/>
-      <TeamList tList={savedTeamInfo} key={savedTeamInfo.id}/>
+      <UserList tList={savedUserInfo} key={savedUserInfo.id}/>
     </div>
   );
 }
