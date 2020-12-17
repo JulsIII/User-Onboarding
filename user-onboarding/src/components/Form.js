@@ -28,7 +28,7 @@ export default function Form(props) {
           <label htmlFor="email">
             Password
             <input
-              type="passsword"
+              type="password"
               name="password"
               value={formValues.password}
               onChange={change}
@@ -38,7 +38,7 @@ export default function Form(props) {
           <label htmlFor="terms">
           Agree to Terms<input type="checkbox" name="terms" onChange={change}/> 
         </label>
-          <button disabled={buttonDisabled}>Submit</button>
+          <button id='submitBtn' disabled={buttonDisabled}>Submit</button>
         </form>
       </div>
     );
