@@ -45,11 +45,10 @@ describe("User Onboarding App", () => {
       submitButton().should("be.disabled");
      
       textInput().clear();
-      textInput().type("TEXT INPUT");
+      textInput().type("Namey McNameface");
   
       emailInput().clear();
-      emailInput().type("AUTHOR@INPUT.com");
-
+      emailInput().type("amIdoing@thisright.com");
 
       passwordInput().clear();
       passwordInput().type("password1234");
@@ -64,16 +63,14 @@ describe("User Onboarding App", () => {
 
     it("Check for form validation if an input is left empty.", () => {  
   
-    
         submitButton().should("be.disabled");
      
-        textInput().type("TEXT INPUT");
+        textInput().type("Namey McNameface");
         textInput().clear();
         
-        emailInput().type("AUTHOR@INPUT.com");
+        emailInput().type("amIdoing@thisright.com");
         emailInput().clear();
         
-  
         passwordInput().type("password1234");
         passwordInput().clear();
         
