@@ -11,7 +11,6 @@ describe("User Onboarding App", () => {
     const termsCheckbox = () => cy.get('input[name="terms"]');
     const submitButton = () => cy.get("#submitBtn");
    
-
     it("Sanity Check.", () => {
       expect(1 + 2).to.equal(3);
       expect(2 + 2).not.to.equal(5);
@@ -38,6 +37,7 @@ describe("User Onboarding App", () => {
         .should('be.visible')
         .check({ force: true})
         .should('be.checked')
+        
     });
   
     it("Check to see if a user can submit the form data.", () => {
@@ -58,6 +58,7 @@ describe("User Onboarding App", () => {
 
       submitButton().should("not.be.disabled");
       submitButton().click();
+
     });
   
 
@@ -78,6 +79,7 @@ describe("User Onboarding App", () => {
         termsCheckbox().uncheck({ force: true})
         
         submitButton().should("be.disabled");
+
       });
 
   });
